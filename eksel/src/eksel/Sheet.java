@@ -7,11 +7,13 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class Sheet
+import observer.Beobachtbar;
+
+public class Sheet extends Beobachtbar
 {
     private final JTable _table;
 
-    public Sheet(final Magnifier magnifier)
+    public Sheet()
     {
         _table = new JTable(24, 8);
         _table.setCellSelectionEnabled(true);
@@ -23,7 +25,7 @@ public class Sheet
             {
                 if (event.getValueIsAdjusting() == false)
                 {
-                    magnifier.setText(getSelectedText());
+                    informiereÜberÄnderung();
                 }
             }
         }
@@ -45,6 +47,12 @@ public class Sheet
     public int getSelectedColumn()
     {
         return _table.getSelectedColumn();
+    }
+
+    public String getSelectedColumnName()
+    {
+        int column = getSelectedColumn();
+        return _table.getColumnName(column);
     }
 
     public String getSelectedText()
