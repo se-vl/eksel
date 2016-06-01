@@ -10,10 +10,11 @@ public class Startup implements Runnable
         SwingUtilities.invokeLater(new Startup());
     }
 
+    @Override
     public void run()
     {
         JFrame frame = new JFrame("Eksel");
-        frame.add(new Eksel());
+        frame.add(new Eksel().getPanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
