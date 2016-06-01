@@ -11,7 +11,7 @@ public class Eksel
 
     private final Magnifier _magnifier;
     private final Sheet _sheet;
-    private final Position _position;
+    private final StatusLine _statusLine;
 
     public Eksel()
     {
@@ -19,11 +19,12 @@ public class Eksel
 
         _magnifier = new Magnifier();
         _sheet = new Sheet(_magnifier);
-        _position = new Position();
+        _statusLine = new StatusLine();
 
-        _panel.add(_magnifier.getTextField(), BorderLayout.NORTH);
-        _panel.add(new JScrollPane(_sheet.getTable()), BorderLayout.CENTER);
-        _panel.add(_position.getTextField(), BorderLayout.SOUTH);
+        _panel.add(_magnifier.getSwingComponent(), BorderLayout.NORTH);
+        _panel.add(new JScrollPane(_sheet.getSwingComponent()),
+                BorderLayout.CENTER);
+        _panel.add(_statusLine.getSwingComponent(), BorderLayout.SOUTH);
     }
 
     public JPanel getPanel()

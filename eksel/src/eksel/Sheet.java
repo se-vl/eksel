@@ -2,6 +2,7 @@ package eksel;
 
 import java.util.Objects;
 
+import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -22,8 +23,7 @@ public class Sheet
             {
                 if (event.getValueIsAdjusting() == false)
                 {
-                    magnifier.getTextField()
-                        .setText(getSelectedText());
+                    magnifier.setText(getSelectedText());
                 }
             }
         }
@@ -37,14 +37,26 @@ public class Sheet
             .addListSelectionListener(selectionChanged);
     }
 
-    public JTable getTable()
+    public int getSelectedRow()
     {
-        return _table;
+        return _table.getSelectedRow();
+    }
+
+    public int getSelectedColumn()
+    {
+        return _table.getSelectedColumn();
     }
 
     public String getSelectedText()
     {
-        Object selectedValue = _table.getValueAt(_table.getSelectedRow(), _table.getSelectedColumn());
+        int row = getSelectedRow();
+        int column = getSelectedColumn();
+        Object selectedValue = _table.getValueAt(row, column);
         return Objects.toString(selectedValue, "");
+    }
+
+    public JComponent getSwingComponent()
+    {
+        return _table;
     }
 }

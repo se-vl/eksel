@@ -2,6 +2,7 @@ package eksel;
 
 import java.awt.Font;
 
+import javax.swing.JComponent;
 import javax.swing.JTextField;
 
 public class Magnifier
@@ -15,7 +16,12 @@ public class Magnifier
         _textField.setEditable(false);
     }
 
-    public JTextField getTextField()
+    public void setText(String newText)
+    {
+        _textField.setText(newText);
+    }
+
+    public JComponent getSwingComponent()
     {
         return _textField;
     }

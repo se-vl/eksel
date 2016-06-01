@@ -1,19 +1,25 @@
 package eksel;
 
+import javax.swing.JComponent;
 import javax.swing.JTextField;
 
-public class Position
+public class StatusLine
 {
     private final JTextField _textField;
 
-    public Position()
+    public StatusLine()
     {
         _textField = new JTextField(3);
         _textField.setText("A12");
         _textField.setEditable(false);
     }
 
-    public JTextField getTextField()
+    public void setText(String newText)
+    {
+        _textField.setText(newText);
+    }
+
+    public JComponent getSwingComponent()
     {
         return _textField;
     }
